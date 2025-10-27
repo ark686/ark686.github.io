@@ -1,0 +1,46 @@
+import{_ as s,c as a,o as e,a2 as n}from"./chunks/framework.DENTaYdp.js";const h=JSON.parse('{"title":"Tutlebot4 Basics","description":"","frontmatter":{},"headers":[],"relativePath":"turtlebot4/1_Basic.md","filePath":"turtlebot4/1_Basic.md"}'),l={name:"turtlebot4/1_Basic.md"};function p(o,t,i,c,d,r){return e(),a("div",null,[...t[0]||(t[0]=[n(`<h1 id="tutlebot4-basics" tabindex="-1">Tutlebot4 Basics <a class="header-anchor" href="#tutlebot4-basics" aria-label="Permalink to &quot;Tutlebot4 Basics&quot;">​</a></h1><p>URL: <a href="https://turtlebot.github.io/turtlebot4-user-manual" target="_blank" rel="noreferrer">https://turtlebot.github.io/turtlebot4-user-manual</a></p><h2 id="_1-accessing-turtlebot4-from-ece-laptops" tabindex="-1">1. Accessing Turtlebot4 from ECE Laptops <a class="header-anchor" href="#_1-accessing-turtlebot4-from-ece-laptops" aria-label="Permalink to &quot;1. Accessing Turtlebot4 from ECE Laptops&quot;">​</a></h2><p>Each Turtlebot4 (turtlebot4-XX.usask.ca, with XX = 01 to 11) is paired with a laptop (ece-2c95-XX.usask.ca, with XX = 01 to 11).</p><p>Log into a laptop and perform the following command to set up access:</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>tb4</span></span></code></pre></div><p>To check access (alias for &#39;ros2 topic list&#39;):</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>rtl</span></span></code></pre></div><p>The output should look similar to the following (if a truncated list, try a couple of times):</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>/battery_state</span></span>
+<span class="line"><span>/cmd_audio</span></span>
+<span class="line"><span>/cmd_lightring</span></span>
+<span class="line"><span>/cmd_vel</span></span>
+<span class="line"><span>/cmd_vel_unstamped</span></span>
+<span class="line"><span>/diagnostics</span></span>
+<span class="line"><span>/dock_status</span></span>
+<span class="line"><span>/function_calls</span></span>
+<span class="line"><span>/hmi/buttons</span></span>
+<span class="line"><span>/hmi/display</span></span>
+<span class="line"><span>/hmi/display/message</span></span>
+<span class="line"><span>/hmi/led</span></span>
+<span class="line"><span>/imu</span></span>
+<span class="line"><span>/interface_buttons</span></span>
+<span class="line"><span>/ip</span></span>
+<span class="line"><span>/joint_states</span></span>
+<span class="line"><span>/joy</span></span>
+<span class="line"><span>/joy/set_feedback</span></span>
+<span class="line"><span>/odom</span></span>
+<span class="line"><span>/parameter_events</span></span>
+<span class="line"><span>/robot_description</span></span>
+<span class="line"><span>/rosout</span></span>
+<span class="line"><span>/scan</span></span>
+<span class="line"><span>/tf</span></span>
+<span class="line"><span>/tf_static</span></span>
+<span class="line"><span>/wheel_status</span></span></code></pre></div><p>To verify you can communicate to the base of the turtlebot4 (alias for &#39;ros2 topic echo --once&#39;):</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>rte /battery_state</span></span></code></pre></div><p>The output should look similar to the following (a <code>percentage</code> of <code>1.0</code> represents fully charged):</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>header:</span></span>
+<span class="line"><span>  stamp:</span></span>
+<span class="line"><span>    sec: 1761584658</span></span>
+<span class="line"><span>    nanosec: 462779845</span></span>
+<span class="line"><span>  frame_id: &#39;&#39;</span></span>
+<span class="line"><span>voltage: 16.333999633789062</span></span>
+<span class="line"><span>temperature: 34.75</span></span>
+<span class="line"><span>current: -0.45500001311302185</span></span>
+<span class="line"><span>charge: 1.1979999542236328</span></span>
+<span class="line"><span>capacity: 1.1979999542236328</span></span>
+<span class="line"><span>design_capacity: 1.1979999542236328</span></span>
+<span class="line"><span>percentage: 1.0</span></span>
+<span class="line"><span>power_supply_status: 0</span></span>
+<span class="line"><span>power_supply_health: 0</span></span>
+<span class="line"><span>power_supply_technology: 0</span></span>
+<span class="line"><span>present: true</span></span>
+<span class="line"><span>cell_voltage: []</span></span>
+<span class="line"><span>cell_temperature: []</span></span>
+<span class="line"><span>location: &#39;&#39;</span></span>
+<span class="line"><span>serial_number: &#39;&#39;</span></span>
+<span class="line"><span>---</span></span></code></pre></div><h2 id="_2-turtlebot4-commands" tabindex="-1">2. Turtlebot4 Commands <a class="header-anchor" href="#_2-turtlebot4-commands" aria-label="Permalink to &quot;2. Turtlebot4 Commands&quot;">​</a></h2><table tabindex="0"><thead><tr><th style="text-align:left;">Command</th><th style="text-align:left;">Description</th></tr></thead><tbody><tr><td style="text-align:left;"><code>dock</code></td><td style="text-align:left;">Dock Turtlebot4</td></tr><tr><td style="text-align:left;"><code>pingx</code></td><td style="text-align:left;">Ping Turtlebot4</td></tr><tr><td style="text-align:left;"><code>po</code></td><td style="text-align:left;">Power Off Turtlebot4</td></tr><tr><td style="text-align:left;"><code>rebootx</code></td><td style="text-align:left;">Reboot Raskberry Pi on Turtlebot4</td></tr><tr><td style="text-align:left;"><code>restart_base</code></td><td style="text-align:left;">Reboot Turtlebot4 base</td></tr><tr><td style="text-align:left;"><code>ros2reset</code></td><td style="text-align:left;">Restart ROS2 subsystem</td></tr><tr><td style="text-align:left;"><code>rte</code></td><td style="text-align:left;">ros2 topic echo --once</td></tr><tr><td style="text-align:left;"><code>rtl</code></td><td style="text-align:left;">ros2 topic list</td></tr><tr><td style="text-align:left;"><code>scpxget [filename]</code></td><td style="text-align:left;">Get [filename] from Turtlebot4</td></tr><tr><td style="text-align:left;"><code>scpxput [filename]</code></td><td style="text-align:left;">Write [filename] to Turtlebot4</td></tr><tr><td style="text-align:left;"><code>sshx</code></td><td style="text-align:left;">ssh into Turtlebot4</td></tr><tr><td style="text-align:left;"><code>sshxrun [cmd]</code></td><td style="text-align:left;">Run [cmd] on Turtlebot4</td></tr><tr><td style="text-align:left;"><code>tb4</code></td><td style="text-align:left;">Set up access to Turtlebot4</td></tr><tr><td style="text-align:left;"><code>undock</code></td><td style="text-align:left;">Undock Turtlebot4</td></tr></tbody></table><h2 id="_3-miscellaneous-commands" tabindex="-1">3. Miscellaneous Commands <a class="header-anchor" href="#_3-miscellaneous-commands" aria-label="Permalink to &quot;3. Miscellaneous Commands&quot;">​</a></h2><table tabindex="0"><thead><tr><th style="text-align:left;">Command</th><th style="text-align:left;">Description</th></tr></thead><tbody><tr><td style="text-align:left;"><code>cleanchrome</code></td><td style="text-align:left;">Clean out Chrome config (if problems launching Chrome)</td></tr><tr><td style="text-align:left;"><code>mykillall [name]</code></td><td style="text-align:left;">Kill all processes with name [name]</td></tr><tr><td style="text-align:left;"><code>myps [name]</code></td><td style="text-align:left;">List all processes with name [name]</td></tr></tbody></table>`,18)])])}const b=s(l,[["render",p]]);export{h as __pageData,b as default};
