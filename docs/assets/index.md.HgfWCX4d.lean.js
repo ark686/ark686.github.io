@@ -1,0 +1,1 @@
+import{_ as a,c as r,o as t,ah as o}from"./chunks/framework.ClO9FpS4.js";const _=JSON.parse('{"title":"ECE Documentation","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),n={name:"index.md"};function i(l,e,c,d,h,s){return t(),r("div",null,[...e[0]||(e[0]=[o("",4)])])}const f=a(n,[["render",i]]);export{_ as __pageData,f as default};

@@ -1,0 +1,43 @@
+import{_ as s,c as n,o as p,ah as e}from"./chunks/framework.ClO9FpS4.js";const f=JSON.parse('{"title":"Crazyflie Control","description":"","frontmatter":{},"headers":[],"relativePath":"crazyflie/4_Control.md","filePath":"crazyflie/4_Control.md"}'),l={name:"crazyflie/4_Control.md"};function i(t,a,r,c,o,d){return p(),n("div",null,[...a[0]||(a[0]=[e(`<h1 id="crazyflie-control" tabindex="-1">Crazyflie Control <a class="header-anchor" href="#crazyflie-control" aria-label="Permalink to “Crazyflie Control”">​</a></h1><p>ZIP file containing extended Crazyswarm2 and Python control program (2025-07-03):<br><a href="/docs/crazyflie_control.zip">crazyflie_control.zip</a></p><h2 id="_1-install" tabindex="-1">1. Install <a class="header-anchor" href="#_1-install" aria-label="Permalink to “1. Install”">​</a></h2><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>. build.bash</span></span></code></pre></div><h2 id="_2-run" tabindex="-1">2. Run <a class="header-anchor" href="#_2-run" aria-label="Permalink to “2. Run”">​</a></h2><ul><li>Plug in Crazyflie radio</li><li>Turn on Crazyflie</li></ul><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>. run.bash</span></span></code></pre></div><h2 id="_3-control-py" tabindex="-1">3. control.py <a class="header-anchor" href="#_3-control-py" aria-label="Permalink to “3. control.py”">​</a></h2><p>Select &#39;?&#39; for help:</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>=======================================================</span></span>
+<span class="line"><span>Help:</span></span>
+<span class="line"><span>    SPACE   Hover</span></span>
+<span class="line"><span>    l       Land</span></span>
+<span class="line"><span>    t       Takeoff (0.3 m)</span></span>
+<span class="line"><span>    x       Takeoff (1.0 m)</span></span>
+<span class="line"><span>-------------------------------------------------------</span></span>
+<span class="line"><span>    u       Up (+0.1 m)</span></span>
+<span class="line"><span>    d       Down (-0.1 m)</span></span>
+<span class="line"><span>    f       Forward (+0.2 m/s)</span></span>
+<span class="line"><span>    b       Backward (-0.2 m/s)</span></span>
+<span class="line"><span>    c       Spin clockwise (+0.5 rad/s)</span></span>
+<span class="line"><span>    v       Spin counter-clockwise (-0.5 rad/s)</span></span>
+<span class="line"><span>    [       Strafe left (+0.2 m/s)</span></span>
+<span class="line"><span>    ]       Strafe right (-0.2 m/s)</span></span>
+<span class="line"><span>-------------------------------------------------------</span></span>
+<span class="line"><span>    s       Status</span></span>
+<span class="line"><span>    r       Ranging</span></span>
+<span class="line"><span>    z       Ranging continuous (any key to turn off)</span></span>
+<span class="line"><span>    p       Pose</span></span>
+<span class="line"><span>    o       Odometry</span></span>
+<span class="line"><span>-------------------------------------------------------</span></span>
+<span class="line"><span>    e       Emergency</span></span>
+<span class="line"><span>    h       Go to home (0, 0)</span></span>
+<span class="line"><span>    g       Go to (specify &#39;x y z&#39; afterwards)</span></span>
+<span class="line"><span>    w       Wall follower (any key to turn off)</span></span>
+<span class="line"><span>    a       Arm crazyflie</span></span>
+<span class="line"><span>    R       Restart server</span></span>
+<span class="line"><span>    Q       Reboot crazyflie</span></span>
+<span class="line"><span>    S       Scan for crazyflies</span></span>
+<span class="line"><span>-------------------------------------------------------</span></span>
+<span class="line"><span>    0       Patterns via trajectories (submenu)</span></span>
+<span class="line"><span>    1       Pattern 1 (0.5 m square via gotos)</span></span>
+<span class="line"><span>    2       Pattern 2 (1.0 m diameter circle, vx/yaw)</span></span>
+<span class="line"><span>-------------------------------------------------------</span></span>
+<span class="line"><span>    Ctrl-C  Exit program</span></span></code></pre></div><p>Patterns via trajectories (submenu):</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>=======================================================</span></span>
+<span class="line"><span>Trajectories (RETURN key to go back to main menu):</span></span>
+<span class="line"><span>  1  Square (1 m sides)</span></span>
+<span class="line"><span>  2  Circle (1 m diameter)</span></span>
+<span class="line"><span>  3  Figure 8</span></span>
+<span class="line"><span>  4  Figure 8 (spiral up 0.6 m)</span></span>
+<span class="line"><span>  5  Figure 8 (spiral down 0.6 m)</span></span>
+<span class="line"><span>-------------------------------------------------------</span></span></code></pre></div>`,12)])])}const g=s(l,[["render",i]]);export{f as __pageData,g as default};
