@@ -1,1 +1,0 @@
-import{_ as a,c as t,o as r,ah as o}from"./chunks/framework.D0Xa2kVZ.js";const _=JSON.parse('{"title":"ECE Documentation","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),n={name:"index.md"};function i(c,e,l,d,s,h){return r(),t("div",null,[...e[0]||(e[0]=[o("",3)])])}const f=a(n,[["render",i]]);export{_ as __pageData,f as default};
