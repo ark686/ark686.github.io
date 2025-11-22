@@ -5,6 +5,12 @@
 # Description:
 #    Interactive program to get image from TurtleBot4 and display 
 #    and write to a file.
+#
+# Should run daemons for compressed topics:
+#    ros2 run image_transport republish --ros-args -p in_transport:=compressed -p out_transport:=raw -r in/compressed:=/oakd/rgb/image_raw/compressed -r out:=/image_rgb &
+#    ros2 run image_transport republish --ros-args -p in_transport:=compressed -p out_transport:=raw -r in/compressed:=/oakd/left/image_raw/compressed -r out:=/image_left &
+#    ros2 run image_transport republish --ros-args -p in_transport:=compressed -p out_transport:=raw -r in/compressed:=/oakd/right/image_raw/compressed -r out:=/image_right &
+#    ros2 run image_transport republish --ros-args -p in_transport:=compressedDepth -p out_transport:=raw -r in/compressedDepth:=/oakd/stereo/image_raw/compressedDepth -r out:=/image_depth &
 #----------------------------------------------------------------------
 # Author: Andrew Kostiuk
 # Copyright (c) 2025 University of Saskatchewan
@@ -32,9 +38,13 @@ import datetime
 import cv2
 from cv_bridge import CvBridge
 
-VERSION = "Get Image 2025-11-18.1"
-IMAGE_TOPIC = "/image_rgb"
-#IMAGE_TOPIC = "/oakd/rgb/preview/image_raw"
+VERSION = "Get Image 2025-11-18.2"
+
+TOPIC_RGB =   "/image_rgb"
+TOPIC_LEFT =  "/image_left"
+TOPIC_RIGHT = "/image_right"
+TOPIC_DEPTH = "/image_depth"
+
 KEY_TIMEOUT = 0.1
 
 class g:
@@ -47,6 +57,7 @@ class g:
     imageAvailable = False
     br = CvBridge()
     imageIndex = 0
+    camera = ''
     
 #**********************************************************************
 # MyPrint
@@ -65,12 +76,38 @@ class RobotControl(Node):
     def __init__(self):
         try:
             super().__init__(f"RobotControl")
-            self.image_subscriber = self.create_subscription(Image, IMAGE_TOPIC, self.process_camera, 10)
+            self.image_subscriber = None
             MyPrint(f"RobotControl ready.")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             MyPrint(f"RobotControl: EXCEPTION {e} Line {exc_tb.tb_lineno}")
 
+    def select_camera(self, camera):
+        try:
+            MyPrint(f"select_camera: '{camera}'")
+            g.camera = camera
+            if self.image_subscriber != None:
+                self.destroy_subscription(self.image_subscriber)
+                self.image_subscriber = None
+            match key:
+                case 'rgb':
+                    MyPrint('RGB Camera selected.')
+                    self.image_subscriber = self.create_subscription(Image, TOPIC_RGB, self.process_camera, 10)
+                case 'left':
+                    MyPrint('LEFT Camera selected.')
+                    self.image_subscriber = self.create_subscription(Image, TOPIC_LEFT, self.process_camera, 10)
+                case 'right':
+                    MyPrint('RIGHT Camera selected.')
+                    self.image_subscriber = self.create_subscription(Image, TOPIC_RIGHT, self.process_camera, 10)
+                case 'depth':
+                    MyPrint('DEPTH Camera selected.')
+                    self.image_subscriber = self.create_subscription(Image, TOPIC_DEPTH, self.process_camera, 10)
+                case _:
+                    MyPrint(f"Invalid '{camera}'.")
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            MyPrint(f"RobotControl.select_camera: EXCEPTION {e} Line {exc_tb.tb_lineno}")
+    
     def process_camera(self, msg):
         try:
             #MyPrint(f"RobotControl got image.")
@@ -143,11 +180,15 @@ def restoreTerminalSettings(settings):
 def DisplayHelp():
     MyPrint("=======================================================")
     MyPrint("Help:")
-    MyPrint("    s       Save image")
+    MyPrint("    1       Select RGB camera")
+    MyPrint("    2       Select RIGHT camera")
+    MyPrint("    3       Select LEFT camera")
+    MyPrint("    4       Select DEPTH camera")
+    MyPrint("    s       Save current image")
     MyPrint("    v       View current image")
     MyPrint("    Ctrl-C  Exit program")
     MyPrint("-------------------------------------------------------")
-    MyPrint(" View image first and then save to file")
+    MyPrint(" Select camera, view image first and then save to file")
     MyPrint("-------------------------------------------------------")
     
 #**********************************************************************
@@ -159,8 +200,6 @@ def keyboard():
         DisplayHelp()
         
         while True:
-            #MyPrint(f"{g.front_distance} {g.back_distance} {g.left_distance} {g.right_distance} {g.up_distance}")
-
             key = getKey(g.settings, KEY_TIMEOUT)
             
             # Check for empty key (i.e., timeout)
@@ -173,6 +212,14 @@ def keyboard():
                 match key:
                     case '?':
                         DisplayHelp()
+                    case '1':
+                        g.controller.select_camera('rgb')
+                    case '2':
+                        g.controller.select_camera('right')
+                    case '3':
+                        g.controller.select_camera('left')
+                    case '4':
+                        g.controller.select_camera('depth')
                     case '\x0d':
                         MyPrint(f"{VERSION}, '?' for help")
                     case 's':
@@ -180,8 +227,6 @@ def keyboard():
                     case 'v':
                         ViewImage()
                     case _:
-                        #hex_value = hex(ord(key))
-                        #MyPrint(f"The hexadecimal value of '{key}' is: {hex_value}")
                         MyPrint('')
 
     except Exception as e:
