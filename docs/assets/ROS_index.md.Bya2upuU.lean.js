@@ -1,0 +1,1 @@
+import{_ as a,c as o,o as t,ah as i}from"./chunks/framework.45_uqnis.js";const m=JSON.parse('{"title":"ROS","description":"","frontmatter":{},"headers":[],"relativePath":"ROS/index.md","filePath":"ROS/index.md"}'),r={name:"ROS/index.md"};function s(n,e,l,p,h,c){return t(),o("div",null,[...e[0]||(e[0]=[i("",15)])])}const u=a(r,[["render",s]]);export{m as __pageData,u as default};
